@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1079038391916",
+    "project_id": "tecnomovil-70da0",
+    "storage_bucket": "tecnomovil-70da0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079038391916:android:9a0caf93bfddca115a8a49",
+        "android_client_info": {
+          "package_name": "com.example.entregable1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079038391916-bhaeapam1jtr7equrll0v5o2lqqgfr0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADrQTuXtX8mNtdvE-A4lFoUp5Pa-pQLWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079038391916-bhaeapam1jtr7equrll0v5o2lqqgfr0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

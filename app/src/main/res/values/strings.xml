@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ACME Explorer</string>
+    <string name="Image_splash">Maleta splash</string>
+    <string name="ButtonBuyTrip">Seleccionar</string>
+    <string name="precio">Precio</string>
+    <string name="FechaSalida">Fecha salida</string>
+    <string name="FechaLlegada">Fecha llegada</string>
+    <string name="LugarSalida">Lugar de salida</string>
+    <string name="Filter">Filtrar</string>
+    <string name="PrecioMinimo">Precio mínimo (euros)</string>
+    <string name="PrecioMaximo">Precio máximo (euros)</string>
+    <string name="Aplicar">Aplicar</string>
+</resources>
