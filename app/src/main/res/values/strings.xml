@@ -27,4 +27,6 @@
     <string name="login_download_google_play_services">Actualizar</string>
     <string name="google_play_services_download_url">market://details?id=com.google.android.gms</string>
     <string name="market_download_url">https://play.google.com/store/apps/details?id=com.google.android.gms</string>
+    <string name="default_client_id">1079038391916-bhaeapam1jtr7equrll0v5o2lqqgfr0g.apps.googleusercontent.com</string>
+    <string name="login_completed">El usario se ha accedido correctamente</string>
 </resources>
