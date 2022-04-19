@@ -2,6 +2,7 @@ package com.example.entregable1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.widget.Button;
@@ -45,5 +46,11 @@ public class TripDetailsActivity extends AppCompatActivity {
 
         selected = getIntent().getBooleanExtra("isSelected",false);
         buttonSelect.setEnabled(!selected);
+        buttonSelect.setOnClickListener(view1 -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        });
+
+
     }
 }
