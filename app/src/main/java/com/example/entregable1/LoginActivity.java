@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Button signInButtonGoogle;
     private Button signInButtonMail;
-    private Button signInButtonRegister;
+    private Button buttonRegister;
     private ProgressBar progressBar;
     private AutoCompleteTextView loginEmail;
     private AutoCompleteTextView loginPassword;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password_et);
         signInButtonGoogle = findViewById(R.id.login_button_google);
         signInButtonMail = findViewById(R.id.login_button_mail);
-        signInButtonRegister = findViewById(R.id.login_button_register);
+        buttonRegister = findViewById(R.id.login_button_register);
         loginEmailParent = findViewById(R.id.login_email);
         loginPasswordParent = findViewById(R.id.login_password);
 
@@ -71,6 +71,14 @@ public class LoginActivity extends AppCompatActivity {
 
         signInButtonMail.setOnClickListener(l -> attemptLoginEmail());
 
+        buttonRegister.setOnClickListener(l -> redirectRegisterActivity());
+
+    }
+
+    private void redirectRegisterActivity() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        intent.putExtra(RegisterActivity.EMAIL_PARAM, loginEmail.getText().toString());
+        startActivity(intent);
     }
 
     private void attemptLoginGoogle(GoogleSignInOptions googleSignInOptions) {
@@ -164,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             signInButtonMail.setVisibility(View.GONE);
             signInButtonGoogle.setVisibility(View.GONE);
-            signInButtonRegister.setVisibility(View.GONE);
+            buttonRegister.setVisibility(View.GONE);
             loginPasswordParent.setEnabled(false);
             loginEmailParent.setEnabled(false);
         } else {
@@ -172,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
             progressBar.setVisibility(View.GONE);
             signInButtonMail.setVisibility(View.VISIBLE);
             signInButtonGoogle.setVisibility(View.VISIBLE);
-            signInButtonRegister.setVisibility(View.VISIBLE);
+            buttonRegister.setVisibility(View.VISIBLE);
             loginPasswordParent.setEnabled(true);
             loginEmailParent.setEnabled(true);
         }
@@ -195,7 +203,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void showGooglePlayServicesError() {
-        Snackbar.make(signInButtonRegister, R.string.login_google_play_services_error, Snackbar.LENGTH_SHORT)
+        Snackbar.make(buttonRegister, R.string.login_google_play_services_error, Snackbar.LENGTH_SHORT)
                 .setAction(R.string.login_download_google_play_services, view -> {
                    try {
                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.google_play_services_download_url))));
