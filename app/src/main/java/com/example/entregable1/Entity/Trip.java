@@ -2,7 +2,6 @@ package com.example.entregable1.Entity;
 
 import com.example.entregable1.Constantes;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class Trip {
         this.endDate = endDate;
         this.startPlace = startPlace;
         this.urlImageViewTrip = urlImageViewTrip;
-        this.isSelected = isSelected;
+        this.isSelected = false;
     }
 
     public String getDestination() {
@@ -94,5 +93,19 @@ public class Trip {
 
     public static List<Trip> listaViajes() {
         return Arrays.asList(Constantes.viajes);
+    }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "destination='" + destination + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", startPlace='" + startPlace + '\'' +
+                ", urlImageViewTrip='" + urlImageViewTrip + '\'' +
+                ", isSelected=" + isSelected +
+                '}';
     }
 }
