@@ -36,4 +36,9 @@
     <string name="register_error_password_not_match">Las contraseñas no coinciden</string>
     <string name="register_ok">El usario se ha registrado correctamente</string>
     <string name="register_error">Se ha producido un error al registrar al usario</string>
+    <string name="take_picture">Obtener imagen</string>
+    <string name="take_picture_camera_rationale">Necesitamos acceder a tu cámara</string>
+    <string name="take_picture_camera_rationale_ok">Permitir</string>
+    <string name="camera_not_granted">No es posible usar esta función sin la cámara</string>
+    <string name="storage_not_granted">No se puede almacenar la foto</string>
 </resources>

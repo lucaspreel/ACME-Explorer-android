@@ -1,5 +1,6 @@
 package com.example.entregable1.Entity;
 
+import com.example.entregable1.FirebaseStor;
 import com.example.entregable1.ListadoActivity;
 import com.example.entregable1.ListadoSelectedActivity;
 import com.example.entregable1.MainActivity;
@@ -47,6 +48,7 @@ public class Enlace {
         List<Enlace> list = new ArrayList<>();
         list.add(new Enlace("Viajes disponibles", ListadoActivity.class, R.drawable.viajar));
         list.add(new Enlace("Viajes seleccionados", ListadoSelectedActivity.class, R.drawable.objetivo));
+        list.add(new Enlace("Perfil", FirebaseStor.class, R.drawable.profile));
         return list;
     }
 }
