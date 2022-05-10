@@ -2,6 +2,7 @@ package com.example.entregable1.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,12 @@ import java.util.List;
 public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
     private List<Trip> tripList;
+    private Location location;
     private Context context;
 
-    public TripAdapter(List<Trip> tripList) {
+    public TripAdapter(List<Trip> tripList, Location location) {
         this.tripList = tripList;
+        this.location = location;
     }
 
 
@@ -47,7 +50,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         Trip trip = tripList.get(position);
 
         holder.textViewDestination.setText(trip.getDestination());
-        holder.textViewDescription.setText(trip.getDescription());
+        holder.textViewDistance.setText(Double.toString(location.distanceTo(trip.getStartPlace())) + " metros");
 
         if (trip.isSelected()) {
             holder.textViewIsSelected.setText("Viaje seleccionado");
@@ -68,7 +71,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
             intent.putExtra("price", trip.getPrice());
             intent.putExtra("startDate", trip.getStartDate());
             intent.putExtra("endDate", trip.getEndDate());
-            intent.putExtra("startPlace", trip.getStartPlace());
+            intent.putExtra("startPlaceLong", trip.getStartPlace().getLongitude());
+            intent.putExtra("startPlaceLat", trip.getStartPlace().getLatitude());
             intent.putExtra("isSelected", trip.isSelected());
             context.startActivity(intent);
         });
@@ -82,7 +86,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewDestination;
-        TextView textViewDescription;
+        TextView textViewDistance;
         TextView textViewIsSelected;
         ImageView imageViewTrip;
         CardView cardViewTrip;
@@ -90,7 +94,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewDestination = itemView.findViewById(R.id.textViewDestination);
-            textViewDescription = itemView.findViewById(R.id.textViewDescription);
+            textViewDistance = itemView.findViewById(R.id.textViewDistance);
             textViewIsSelected = itemView.findViewById(R.id.textViewIsSelected);
             imageViewTrip = itemView.findViewById(R.id.imageViewTrip);
             cardViewTrip = itemView.findViewById(R.id.cardViewTrip);

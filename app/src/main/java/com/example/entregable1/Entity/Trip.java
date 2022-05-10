@@ -1,5 +1,7 @@
 package com.example.entregable1.Entity;
 
+import android.location.Location;
+
 import com.example.entregable1.Constantes;
 
 import java.util.Arrays;
@@ -11,18 +13,20 @@ public class Trip {
     private int price;
     private String startDate;
     private String endDate;
-    private String startPlace;
+    private Location startPlace;
     private String urlImageViewTrip;
     private boolean isSelected;
 
     public Trip(String destination, String description, int price, String startDate, String endDate,
-                String startPlace, String urlImageViewTrip, boolean isSelected) {
+                double startPlaceLong, double startPlaceLat, String urlImageViewTrip, boolean isSelected) {
         this.destination = destination;
         this.description = description;
         this.price = price;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.startPlace = startPlace;
+        this.startPlace = new Location("");
+        startPlace.setLatitude(startPlaceLat);
+        startPlace.setLongitude(startPlaceLong);
         this.urlImageViewTrip = urlImageViewTrip;
         this.isSelected = false;
     }
@@ -67,11 +71,11 @@ public class Trip {
         this.endDate = endDate;
     }
 
-    public String getStartPlace() {
+    public Location getStartPlace() {
         return startPlace;
     }
 
-    public void setStartPlace(String startPlace) {
+    public void setStartPlaceLong(Location startPlace) {
         this.startPlace = startPlace;
     }
 
@@ -103,7 +107,8 @@ public class Trip {
                 ", price=" + price +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
-                ", startPlace='" + startPlace + '\'' +
+                ", startPlaceLong='" + startPlace.getLongitude() + '\'' +
+                ", startPlaceLat='" + startPlace.getLatitude() + '\'' +
                 ", urlImageViewTrip='" + urlImageViewTrip + '\'' +
                 ", isSelected=" + isSelected +
                 '}';

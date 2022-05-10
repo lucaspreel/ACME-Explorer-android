@@ -41,4 +41,7 @@
     <string name="take_picture_camera_rationale_ok">Permitir</string>
     <string name="camera_not_granted">No es posible usar esta función sin la cámara</string>
     <string name="storage_not_granted">No se puede almacenar la foto</string>
+    <string name="location_rationale">Se necesita la localización para esta funcionalidad</string>
+    <string name="location_rationale_ok">Permitir localización</string>
+    <string name="location_cancel">Este funcion es importante para la aplicación</string>
 </resources>

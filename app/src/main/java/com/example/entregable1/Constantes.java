@@ -1,9 +1,11 @@
 package com.example.entregable1;
 
+import android.location.Location;
+
 import com.example.entregable1.Entity.Trip;
 
 public final class Constantes {
-    public final static Trip[] viajes = {
+    public final static Trip[] viajes = {/*
             new Trip("Paris", "Viaje Paris",
                     800, "25 apr 2022", "02 may 2022", "Sevilla",
                     "https://png.pngtree.com/element_pic/17/09/23/891e71ffa7e5efe9f5440513fa069add.jpg",
@@ -28,7 +30,9 @@ public final class Constantes {
                     1320, "25 july 2022", "04 august 2022", "Madrid",
                     "https://png.pngtree.com/element_our/sm/20180416/sm_5ad452dbaaf09.png",
                     false),
-    };
+    */};
 
     public final static String filtroPreferences = "Filtro", fechaInicio = "FechaInicio", fechaFin = "FechaFin";
+
+    public Location location;
 }

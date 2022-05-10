@@ -5,13 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.entregable1.Entity.Trip;
 import com.example.entregable1.adapter.TripAdapter;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -30,17 +37,19 @@ public class ListadoActivity extends AppCompatActivity implements EventListener<
     private ListenerRegistration listenerRegistration;
     private DataChangedListener mDataChangedListener;
     private ItemErrorListener mErrorListener;
+    private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado);
 
+        startLocationService();
         this.tripList = new ArrayList<>();
         listenerRegistration = FirestoreService.getServiceInstance().getTrips(this);
 
         recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(new TripAdapter(tripList));
+        recyclerView.setAdapter(new TripAdapter(tripList, location));
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
     }
 
@@ -63,7 +72,7 @@ public class ListadoActivity extends AppCompatActivity implements EventListener<
                         .filter(trip -> trip.getPrice() < Integer.valueOf(filter_priceMax))
                         .collect(Collectors.toList());
 
-                recyclerView.setAdapter(new TripAdapter(filteredTripList));
+                recyclerView.setAdapter(new TripAdapter(filteredTripList, location));
                 recyclerView.setLayoutManager(new GridLayoutManager(this,1));
             }
 
@@ -80,7 +89,7 @@ public class ListadoActivity extends AppCompatActivity implements EventListener<
             tripList.addAll(value.toObjects(Trip.class));
         }
         mDataChangedListener.onDataChanged();
-        recyclerView.setAdapter(new TripAdapter(tripList));
+        recyclerView.setAdapter(new TripAdapter(tripList, location));
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
     }
 
@@ -99,4 +108,24 @@ public class ListadoActivity extends AppCompatActivity implements EventListener<
     public interface DataChangedListener {
         void onDataChanged();
     }
+
+    @SuppressLint("MissingPermission")
+    private void startLocationService() {
+        FusedLocationProviderClient locationServices = LocationServices.getFusedLocationProviderClient(this);
+        LocationRequest locationRequest = new LocationRequest();
+        locationRequest.setInterval(3000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setSmallestDisplacement(10);
+        locationServices.requestLocationUpdates(locationRequest, locationCallback, null);
+    }
+
+    LocationCallback locationCallback = new LocationCallback() {
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            if (locationResult == null || locationResult.getLastLocation() == null || !locationResult.getLastLocation().hasAccuracy()) {
+                return;
+            }
+            location = locationResult.getLastLocation();
+        }
+    };
 }
