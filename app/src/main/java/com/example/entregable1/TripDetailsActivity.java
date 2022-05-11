@@ -13,9 +13,9 @@ import com.squareup.picasso.Picasso;
 
 public class TripDetailsActivity extends AppCompatActivity {
 
-    TextView tvDestination, tvPrice, tvStartDate, tvEndDate, tvStartPlace;
+    TextView tvDestination, tvPrice, tvStartDate, tvEndDate;
     ImageView imageView;
-    Button buttonSelect;
+    Button buttonSelect, buttonShowOnMap;
     Boolean selected;
 
     @Override
@@ -29,7 +29,7 @@ public class TripDetailsActivity extends AppCompatActivity {
         tvPrice = findViewById(R.id.textViewPrecio);
         tvStartDate = findViewById(R.id.textViewFechaSalida);
         tvEndDate = findViewById(R.id.textViewFechaLlegada);
-        tvStartPlace = findViewById(R.id.textViewLugarSalida);
+        buttonShowOnMap = findViewById(R.id.buttonShowOnMap);
         buttonSelect = findViewById(R.id.buttonSelectTrip);
 
         Picasso.get()
@@ -42,12 +42,18 @@ public class TripDetailsActivity extends AppCompatActivity {
         tvPrice.setText(String.valueOf(getIntent().getIntExtra("price",0)));
         tvStartDate.setText(getIntent().getStringExtra("startDate"));
         tvEndDate.setText(getIntent().getStringExtra("endDate"));
-        tvStartPlace.setText(getIntent().getStringExtra("startPlace"));
+
+        buttonShowOnMap.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        });
 
         selected = getIntent().getBooleanExtra("isSelected",false);
         buttonSelect.setEnabled(!selected);
         buttonSelect.setOnClickListener(view1 -> {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("longitude", getIntent().getStringExtra("startPlaceLong"));
+            intent.putExtra("latitude", getIntent().getStringExtra("startPlaceLat"));
             startActivity(intent);
         });
 

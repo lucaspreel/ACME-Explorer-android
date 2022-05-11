@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Entregable1">
         <activity
+            android:name=".MapActivity"
+            android:exported="false" />
+        <activity
             android:name=".LocationActivity"
             android:exported="false" />
         <activity
@@ -55,6 +58,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAgeJV_bJJE2iY2u4DjzDiSNXC8E15GVnk" />
     </application>
 
 </manifest>

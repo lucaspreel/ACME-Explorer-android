@@ -75,7 +75,7 @@ public class Trip {
         return startPlace;
     }
 
-    public void setStartPlaceLong(Location startPlace) {
+    public void setStartPlace(Location startPlace) {
         this.startPlace = startPlace;
     }
 

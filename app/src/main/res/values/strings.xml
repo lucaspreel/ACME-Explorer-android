@@ -44,4 +44,5 @@
     <string name="location_rationale">Se necesita la localización para esta funcionalidad</string>
     <string name="location_rationale_ok">Permitir localización</string>
     <string name="location_cancel">Este funcion es importante para la aplicación</string>
+    <string name="ButtonShowOnMap">Mostrar el lugar de salida en el mapa</string>
 </resources>
