@@ -45,4 +45,8 @@
     <string name="location_rationale_ok">Permitir localización</string>
     <string name="location_cancel">Este funcion es importante para la aplicación</string>
     <string name="ButtonShowOnMap">Mostrar el lugar de salida en el mapa</string>
+    <string name="ButtonShowWeather">Mostrar el tiempo actual en esta ciudad</string>
+    <string name="Temperatura">Temperatura actual</string>
+    <string name="WeatherDescription">Tiempo actual</string>
+    <string name="open_weather_map_api_key">bf6bfb989f475209f4f8c8cb1af82a5d</string>
 </resources>
